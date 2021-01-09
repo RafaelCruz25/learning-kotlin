@@ -16,12 +16,23 @@ repositories {
 	mavenCentral()
 }
 
+val swaggerVersion = "2.9.2"
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.springframework.boot:spring-boot-devtools:2.4.0")
+	implementation("javax.validation:validation-api:2.0.1.Final")
+
+
+	implementation("io.springfox:springfox-swagger2:$swaggerVersion")
+	implementation("io.springfox:springfox-swagger-ui:$swaggerVersion")
+
+	runtimeOnly("mysql:mysql-connector-java:8.0.21")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

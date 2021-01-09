@@ -1,0 +1,14 @@
+server:
+  error:
+    include-stacktrace: on_param
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/animes?createDatabaseIfNotExist=true
+    username: root
+    password: guest
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true

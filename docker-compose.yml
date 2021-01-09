@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  db:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: guest
+    ports:
+      - "3306:3306"
+    volumes:
+      - learning_kotlin_data:/var/lib/mysql
+
+volumes:
+  learning_kotlin_data:
