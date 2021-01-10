@@ -1,7 +1,3 @@
-server:
-  error:
-    include-stacktrace: on_param
-
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/animes?createDatabaseIfNotExist=true
@@ -11,6 +7,11 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
+
+server:
+  port: 1980
+  error:
+    include-stacktrace: on_param
 
 logging:
   level:
