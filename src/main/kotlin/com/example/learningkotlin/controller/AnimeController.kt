@@ -15,8 +15,10 @@ class AnimeController(
 ) {
 
     @GetMapping
-    fun listAll(): ResponseEntity<List<Anime>> {
-        val list = animeService.listAll()
+    fun listAll( @RequestParam(required = false, defaultValue = "1") page: Int,
+                 @RequestParam(required = false, defaultValue = "20") size: Int = 20
+    ): ResponseEntity<List<Anime>> {
+        val list = animeService.listAll(page, size)
 
         return ResponseEntity.ok(list)
     }
