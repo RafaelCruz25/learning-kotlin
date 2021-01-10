@@ -5,13 +5,25 @@ import com.example.learningkotlin.domain.entity.Anime
 import com.example.learningkotlin.exception.ExistingContentException
 import com.example.learningkotlin.exception.NotFoundException
 import com.example.learningkotlin.repository.AnimeRepository
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
 @Service
 class AnimeService(private val animeRepository: AnimeRepository) {
 
-    fun listAll(): List<Anime> {
-        return animeRepository.findAll()
+    fun listAll(page: Int, size: Int): List<Anime> {
+        val pageRequest = PageRequest.of(page -1, size, Sort.by("name"))
+
+        return animeRepository
+            .findAll(pageRequest)
+            .content.map {
+                Anime(
+                    it.id,
+                    it.name,
+                    it.bornAt
+                )
+            }
     }
 
     fun findById(id: Long): Anime {
