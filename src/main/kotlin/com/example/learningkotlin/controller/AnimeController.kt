@@ -1,16 +1,14 @@
 package com.example.learningkotlin.controller
 
-import com.example.learningkotlin.domain.entity.Anime
 import com.example.learningkotlin.domain.AnimeRequest
+import com.example.learningkotlin.domain.entity.Anime
 import com.example.learningkotlin.service.AnimeService
 import org.springframework.http.ResponseEntity
-import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import javax.validation.Valid
 
 
-@Validated
 @RestController
 @RequestMapping("animes")
 class AnimeController(
