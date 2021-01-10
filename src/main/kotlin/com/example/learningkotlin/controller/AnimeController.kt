@@ -4,19 +4,33 @@ import com.example.learningkotlin.domain.AnimeRequest
 import com.example.learningkotlin.domain.entity.Anime
 import com.example.learningkotlin.service.AnimeService
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import javax.validation.Valid
+import javax.validation.constraints.Max
+import javax.validation.constraints.Min
 
 @RestController
 @RequestMapping("animes")
 class AnimeController(
     private val animeService: AnimeService
 ) {
+    companion object {
+        private const val maxElements = 50L
+    }
 
     @GetMapping
-    fun listAll( @RequestParam(required = false, defaultValue = "1") page: Int,
-                 @RequestParam(required = false, defaultValue = "20") size: Int = 20
+    fun listAll(
+        @Valid @Min(1) @RequestParam(required = false, defaultValue = "1") page: Int,
+        @Valid @Min(1) @Max(maxElements) @RequestParam(required = false, defaultValue = "20") size: Int = 20
     ): ResponseEntity<List<Anime>> {
         val list = animeService.listAll(page, size)
 
