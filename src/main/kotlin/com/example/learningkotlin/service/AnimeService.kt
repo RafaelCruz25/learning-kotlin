@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 class AnimeService(private val animeRepository: AnimeRepository) {
 
     fun listAll(page: Int, size: Int): List<Anime> {
-        val pageRequest = PageRequest.of(page -1, size, Sort.by("name"))
+        val pageRequest = PageRequest.of(page - 1, size, Sort.by("name"))
 
         return animeRepository
             .findAll(pageRequest)
@@ -33,7 +33,7 @@ class AnimeService(private val animeRepository: AnimeRepository) {
     }
 
     fun createAnime(request: AnimeRequest): Long {
-        if(animeRepository.existsByName(request.name)){
+        if (animeRepository.existsByName(request.name)) {
             throw ExistingContentException("Name ${request.name} already exists")
         }
 

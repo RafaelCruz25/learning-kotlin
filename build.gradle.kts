@@ -27,6 +27,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-devtools:2.4.0")
 	implementation("javax.validation:validation-api:2.0.1.Final")
 
+	implementation("io.micrometer:micrometer-registry-prometheus:1.6.2")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:2.3.7.RELEASE")
+
 
 	implementation("io.springfox:springfox-swagger2:$swaggerVersion")
 	implementation("io.springfox:springfox-swagger-ui:$swaggerVersion")
