@@ -21,7 +21,7 @@ class AnimeService(private val animeRepository: AnimeRepository) {
     }
 
     fun createAnime(request: AnimeRequest): Long {
-        if(animeRepository.equals(request.name)){
+        if(animeRepository.existsByName(request.name)){
             throw ExistingContentException("Name ${request.name} already exists")
         }
 
